@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI课程设计</title>
+    <link rel="stylesheet" href="reg.css">
+</head>
+
+<body>
+    <a id="top"></a>
+    <img id="imgui" src="imgs/课设标题.png" />
+    <!-- 1、文本的内容 -->
+    <div id="text" onclick="displaynone('text1')">文本内容点击出现</div>
+    <div id="text1">
+        <p>段落标签</p>
+        <b><i>既是粗体又是斜体</i></b>
+        <span id="span标签">这是span标签</span>
+    </div>
+    <!-- 2、列表的内容 -->
+    <div id="list">
+        <h1 class="list_title">有序列表</h1>
+            <ol class="list">
+                <li>标题1</li>
+                <li>标题2</li>
+                <li>标题3</li>
+            </ol>
+        <h2 class="list_title">无序列表</h2>
+            <ul class="list">
+                <li>标题1</li>
+                <li>标题2</li>
+                <li>标题3</li>
+            </ul>
+    </div>
+    <!-- 3、图片的应用   -->
+    <div id="use picture">
+        <a id="picture" href="https://wx.qq.com/"></a>
+        <!-- <table id="picturemove">
+            <tr >
+            <td id="picture0"><marquee align="absmiddle" behavior="alternate" direction="right" ><img src="imgs/icon.png" width="50px" height="50px"/></marquee></td>
+            </tr>
+        </table> -->
+        <div id="picture0">
+            <marquee align="absmiddle" behavior="alternate" direction="right" ><img src="imgs/icon.png" width="50px" height="50px"/></marquee>
+        </div>
+    </div>
+
+    <!-- 4、超链接 -->
+    <div id="hyperlink">
+        <a id="baidu" href="http://www.baidu.com" target="_blank">百度</a>
+        <a id="zip" href="zip.zip">压缩包下载</a>
+    </div>
+
+    <!-- 5、锚点链接 -->
+    <a id="top0" href="#top">↑↑↑返回顶部↑↑↑</a>
+    <a id="bottom0" href="#bottom">↓↓↓页面底部↓↓↓</a>
+    <!-- 6、表格的应用 -->
+    <div id="biaoge0">
+        <table id="biaoge" border="1" cellpadding="10">
+            <caption>班级个人爱好名单</caption>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>         
+                <th>爱好</th>
+                <th>备注</th>
+            </tr>
+            <tr align="center">		
+                <td>1</td>
+                <td>小明</td>
+                <td>篮球</td>
+                <td rowspan="3"></td>
+            </tr>
+            <tr align="center">
+                <td>2</td>
+                <td>小红</td>
+                <td>排球</td>
+            </tr>
+            <tr align="center">
+                <td>3</td>
+                <td>小李</td>
+                <td>乒乓球</td>
+            </tr>
+            <tr align="center">
+                <td colspan="4">
+                    本班级一共有<font color="green">3</font>人
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- 7、带校验功能的注册页面，（P57-59）并且模拟注册成功。 -->
+    <div id="container">
+        <h2>用户注册界面</h2>
+        <hr/>
+        <form action="submit.html" method="get" >
+            <label>
+                用&nbsp;户&nbsp;名&nbsp;：<input type="text" id="username" placeholder="请输入用户名" name="username" onmousemove="setStyle(this.id)" onblur="checkuser('username','用户名不能为空');cleartimeid()" onfocus="check('username')" required/> 
+                <span id="usernamespan"></span>
+            </label><br />
+            <label>
+                密&emsp;&nbsp&nbsp码&nbsp：<input id="password" type="password" placeholder="请输入密码" name="password" onmousemove="setStyle(this.id)" onblur="checkuser('password','密码不能为空');cleartimeid();compare()" onfocus="check('password')" required/> 
+                <span id="passwordspan"></span>
+            </label><br />
+            <label>
+                密码确认：<input id="password2" type="password" placeholder="请再次输入密码" name="password" onmousemove="setStyle(this.id)" onblur="checkuser('password2','二次输入密码不能为空');cleartimeid();compare()" onfocus="compare()" required/> 
+                <span id="password2span"></span>
+            </label><br />
+            <label>
+                邮&emsp;&nbsp&nbsp箱&nbsp：<input id="email" type="email" placeholder="请输入您的邮箱" name="email" onmousemove="setStyle(this.id)" onblur="checkuser('email','邮箱不能为空');cleartimeid()" onfocus="check('email')" required/>
+                <span id="emailspan"></span>
+            </label><br />
+            <input id="submit" type="submit" value="提交" />
+            <input id="reset" type="reset" />
+        </form>
+    </div>
+
+    <!-- 8、背景音乐，例如：P119-122。 -->
+    <div id="musicplay">
+        <h3>简易音乐播放器</h3>
+        <hr/>
+        <audio id="myaudio" controls="true">
+            <source src="music/歌曲1.mp3" type="audio/mpeg">
+        </audio>
+        <span><img src="imgs/icon.png"></span>
+        <div>
+            当前正在播放：<span id="title">隔岸观火</span>
+        </div>
+        <br>
+        <div>
+            <button id="lastmusic" onclick="lastMusic()">上一首</button>
+            <button id="toggleBtn" onclick="toggleMusic()">播放/暂停</button>
+            <button id="nextmusic" onclick="nextMusic()">下一首</button>
+            <button id="musicloop" onclick="loop()"><span id="setloop">开启循环播放</span></button>
+        </div>
+    </div>
+
+    <!-- 9、HTML5页面小视频的播放。P324-332。	 -->
+    <a id="usevideo" onclick = "displaynone('videomain')" href="javascript:void(0)"></a>
+    <div id="videomain">
+        <video id="screen" height="561" src="video/视频.mp4" controls></video>
+    </div>
+
+    <!-- 10、导航栏，本网页页面的导航链接 -->
+    <div id="daohang0">
+        <ul id="daohang">
+            <li id="daohang1"><a id="daohanglink" href="https://www.oppo.com/cn/">OPPO</a></li>
+            <li id="daohang1"><a id="daohanglink" href="https://www.mi.com/">小米</a></li>
+            <li id="daohang1"><a id="daohanglink" href="https://www.vivo.com.cn/">VIVO</a></li>
+            <li id="daohang1"><a id="daohanglink" href="https://www.huawei.com/cn/?ic_medium=direct&ic_source=surlent">华为商城</a></li>
+            <li id="daohang1"><a id="daohanglink" href="https://www.apple.com.cn/?afid=p238%7C2LYlmDRr_mtid_18707vxu38484&cid=aos-cn-kwba-brand-bz">苹果</a></li>
+            <li id="daohang1"><a id="daohanglink" href="https://www.meizu.com/">魅族</a></li>
+            <li id="daohang1"><a id="daohanglink" href="https://www.samsung.com/cn/">三星</a></li>
+        </ul>
+    </div>
+
+    <!-- 11、CSS样式的应用。 -->
+    <!-- <h3 id="csslink"><a id="csslink1" href="http://www.baidu.com">百度</a></h3> -->
+    <!-- 13、JavaScript的应用 -->
+    <div id="clock">
+        <div class="box1" id="h"></div>
+        <div class="box2">:</div>
+        <div class="box1" id="m"></div>
+        <div class="box2">:</div>
+        <div class="box1" id="s"></div>
+    </div>
+    <div id="calendar">
+        <div>
+            <button class="rili" onclick="lastMonth()">上个月</button>
+            <div id="month">日期</div>
+            <button class="rili" onclick="nextMonth()">下个月</button>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <div>
+            <div class="everyday">日</div>
+            <div class="everyday">一</div>
+            <div class="everyday">二</div>
+            <div class="everyday">三</div>
+            <div class="everyday">四</div>
+            <div class="everyday">五</div>
+            <div class="everyday">六</div>
+        </div>
+        <div id="day"></div>
+    </div>
+
+<!-- 14、调查问卷 -->
+    <div id="diaocha">
+        <a id="diaochawj" onclick = "displaynone('questionnaire')" href="javascript:void(0)"></a>
+        <div id="questionnaire">
+            <h1 id="iphone">手机业务调查问卷</h1>
+            <form method="POST"action="submittwo.html" onsubmit="return check()">
+                <ol>
+                    <li>您的受教育程度是？</li>
+                    <label>
+                        <input type="radio" name="q1" value="q1_1" required>初中及以下</label>
+                    <label>
+                        <input type="radio" name="q1" value="q1_2" required>高中</label>
+                    <label>
+                        <input type="radio" name="q1" value="q1_3" required>大专</label>
+                    <label>
+                        <input type="radio" name="q1" value="q1_4" required>本科及以上</label>
+                    <li>您经常使用以下哪些手机业务？（可多选）</li>
+                    <label>
+                        <input type="checkbox" name="q2" value="q2_1">游戏币充值</label>
+                    <label>
+                        <input type="checkbox" name="q2" value="q2_2">刷手机购物</label>
+                    <label>
+                        <input type="checkbox" name="q2" value="q2_3">刷手机坐公交</label>
+                    <label>
+                        <input type="checkbox" name="q2" value="q2_4">用手机远程缴费</label>
+                    <li>您使用的手机品牌为？</li>
+                    <select>
+                        <option value="huawei">华为</option>
+                        <option value="xiaomi">小米</option>
+                        <option value="oppo">oppo</option>
+                        <option value="vivo">vivo</option>
+                        <option value="others">其他</option>
+                    </select>
+                    <li>您日常的话费用在什么地方？</li>
+                    <select multiple>
+                        <option value="call">打电话</option>
+                        <option value="liul">流量</option>
+                        <option value="sendm">发短信</option>
+                    </select>
+                </ol>
+                <input id="submit2" type="submit" value="提交" />
+                <input id="reset2" type="reset" />
+            </form>
+        </div>
+    </div>
+<!-- 15、贪吃蛇小游戏 -->
+    <div id="game">
+        <a id="gamea" href="贪吃蛇.html"></a>
+    </div>
+<!-- 16、DOM操作节点 -->
+    <a id="usedom" onclick = "displaynone('dom')" href="javascript:void(0)"></a>
+    <div id="dom">
+        <h1 id="domtitle">DOM操作节点</h1>
+            <ul id="demo" name="dom">
+                <li id="bj">北京</li>
+                <li id="shId">上海</li>
+                <li id="gz">广州</li>
+            </ul>
+            <br />
+            <input id="dombtn" type="button" value="添加" onclick="run()" />
+            <input id="dombtn" type="button" value="插入" onclick="add()" />
+    </div>
+
+<!-- 17、弹出窗口案例 -->
+    <div id="alertwin">
+        <input id="alertwin1" type="button" value="弹弹弹窗口" onclick="tan()"/>
+    </div>
+
+<!-- 18、图片随机移动案例	 -->
+    <div id="imgmove">
+        <img id="imgId" src="imgs/小汽车.png" alt="">
+        <button id="stoprun" onclick="stoprun()"><span>暂停图片移动</span></button>
+    </div>
+<!-- 19、全选/全不选/反选 的前台效果 -->
+    <a id="useselect" onclick = "displaynone('allselect')" href="javascript:void(0)"></a>
+    <div id="allselect">
+        <h1 id="selecttitle">个人爱好选择</h1>
+        <div id="selectcheck">
+            <input type="checkbox" id="boxId" onclick="selOrNo()" />全选/全不选<br />
+
+            <input type="checkbox" name="love" />看书<br />
+            <input type="checkbox" name="love" />跑步<br />
+            <input type="checkbox" name="love" />打球<br />
+            <input type="checkbox" name="love" />书法<br />
+        </div>
+        <input id="selectbtn" type="button" value="全选" onclick="selAll()" />
+        <input id="selectbtn" type="button" value="全不选" onclick="selNo()" />
+        <input id="selectbtn" type="button" value="反选" onclick="selOth()"/>
+    </div>
+
+<!-- 20、列表项的左右选择案例 -->
+    <a id="move" onclick = "displaynone('listmove')" href="javascript:void(0)"></a>
+    <div id="listmove">
+        <div class="centent">
+            <select multiple="multiple" id="select1" style="width:100px;height:160px;">
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+                <option value="3">选项3</option>
+                <option value="4">选项4</option>
+            </select>
+            <div>
+                <span id="add" >选中添加到右边&gt;&gt;</span>
+                <span id="add_all" >全部添加到右边&gt;&gt;</span>
+            </div>
+        </div>
+
+        <div class="centent">
+            <select multiple="multiple" id="select2" style="width:100px;height:160px;">
+                <option value="5">选项5</option>
+                <option value="6">选项6</option>
+                <option value="7">选项7</option>
+                <option value="8">选项8</option>
+            </select>
+            <div>
+                <span id="remove">&lt;&lt;选中删除到左边</span>
+                <span id="remove_all">&lt;&lt;全部删除到左边</span>
+            </div>
+        </div>
+    </div>
+
+<!-- 21、省市联动案例 -->
+    <a id="shengshild0" onclick = "displaynone('shengshild')" href="javascript:void(0)"></a>
+    <div id="shengshild">
+        <h1>省市联动案例</h1>
+        <select id="select4" onchange="show(this.value)">
+            <option value="none">---请选择---</option>
+            <option value="北京">北京</option>
+            <option value="河北">河北</option>
+            <option value="河南">河南</option>
+            <option value="山东">山东</option>
+        </select>
+
+        <select id="select3">
+        </select>
+    </div>
+<!-- 22、页脚内容 -->
+    <div id="footer">
+        <span id="footspan">页面页脚</span>
+        <span id="footspan">Copyright：208有限公司；</span>
+        <span id="footspan">友情链接：<a id="foota" href="http://www.hebau.edu.cn/">河北农业大学官网</a>；</span>
+        <span id="footspan">联系方式：</span>
+        <span id="footspan">del：155xxxxxxxx</span>
+    </div>
+
+<button id="fengjingbtn" onclick="fengjing()">看风景</div>
+    <a name="bottom"></a>
+</body>
+    <script type="text/javascript" src="myjs.js"></script>
+</html>
+
